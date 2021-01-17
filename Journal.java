@@ -19,10 +19,24 @@ public class Journal{
 
 	public static void main(String[] args){
 		Journal j = new Journal();
+		Scanner s = new Scanner(System.in);
+
+		System.out.println("");
+		System.out.println("Hello");
+		String ans = s.nextLine();
+
+		j.askQuestions();
 	}
 
 
 	public void askQuestions(){
+		this.clearScreen();
+		System.out.println("");
+		System.out.print("Questions");
+	}
 
+	public static void clearScreen(){
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
 	}
 }
