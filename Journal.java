@@ -6,6 +6,7 @@
  */
 
 import java.util.*;
+import java.io.IOException;
 
 public class Journal{
 
@@ -33,10 +34,12 @@ public class Journal{
 		this.clearScreen();
 		System.out.println("");
 		System.out.print("Questions");
+		System.out.println("");
 	}
 
 	public static void clearScreen(){
-		System.out.print("\033[H\033[2J");
-		System.out.flush();
+		try{
+			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+		} catch(IOException | InterruptedException ex){}
 	}
 }
