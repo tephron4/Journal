@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Journal{
 
-	String[] questions = {"How was your day? (1-10)", "Did you code today?"};
+	String[] questions = {"How was your day? (1-10)", "Did you code today?", "Did you read today and what did you read?", "Workout?", "How much water did you drink?"};
 	private String[] answers;
 	Scanner scan;
 
