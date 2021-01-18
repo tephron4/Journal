@@ -47,9 +47,9 @@ public class Journal{
 	public static void main(String[] args){
 		Journal j = new Journal();
 
-		System.out.println("");
-		System.out.println("Hello");
-		String ans = j.scan.nextLine();
+		//System.out.println("");
+		//System.out.println("Hello");
+		//String ans = j.scan.nextLine();
 
 		//j.printQuestions();
 
@@ -121,7 +121,7 @@ public class Journal{
 		}
 
 		if(this.checkDate(month, day, year)){
-			return month + day + year;
+			return month.toUpperCase() + "/" + day + "/" + year;
 		}
 		
 		return "invalid";
@@ -212,7 +212,7 @@ public class Journal{
 		if(clear) this.clearScreen();
 
 		System.out.println("");
-		System.out.println("Your Journal:");
+		System.out.println("Your " + this.date + " Journal:");
 		System.out.println("");
 		
 		for(int i = 0; i < this.questions.length; i++){
