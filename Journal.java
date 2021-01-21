@@ -7,6 +7,7 @@
 
 import java.util.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Journal{
@@ -14,6 +15,8 @@ public class Journal{
 	String[] questions = {"How was your day? (1-10)", "Did you code today?", "Did you read today and what did you read?", "Workout?", "How much water did you drink?"};
 	private String[] answers;
 	String date;
+	private File entry;
+	FileWriter writer;
 
 	Scanner scan;
 
@@ -40,8 +43,15 @@ public class Journal{
 			} catch(InterruptedException e){
 				continue;
 			}
+			
+			if(!this.makeFile()){
+				continue;
+			}
+
 			break;
 		}
+
+
 	}
 
 	public static void main(String[] args){
@@ -56,6 +66,53 @@ public class Journal{
 		//j.printDisplay();
 
 		j.menu();
+	}
+
+	public boolean makeFile(){
+		String filePath = "C:\\Users\\tobia\\JournalEntries" + this.date + "journal.txt";
+		try{
+			this.entry = new File("C:\\Users\\tobia\\JournalEntries\\" + this.date + "journal.txt");
+			if(!this.entry.createNewFile()){
+				System.out.println("A journal for " + this.date + " has already been created.");
+				try{
+					Thread.sleep(5000);
+				} catch(InterruptedException e){
+
+				}
+				return false;
+			}
+		} catch(IOException e){
+			System.out.println("");
+			System.out.print("FILE CREATION ERROR: " + e.getMessage());
+			try{
+				Thread.sleep(5000);
+			} catch(InterruptedException ex){
+
+			}
+			return false;
+		}
+		return this.makeFileWriter();
+	}
+
+	public boolean makeFileWriter(){
+		try{
+				this.writer = new FileWriter("C:\\Users\\tobia\\JournalEntries" + this.date + "journal.txt");
+
+			} catch(IOException e){
+				System.out.println("");
+				System.out.println("FILEWRITER CREATION ERROR: " + e.getMessage());
+				try{
+					Thread.sleep(5000);
+				} catch(InterruptedException ex){
+					
+				}
+				return false;
+			}
+		return true;
+	}
+
+	public void writeToFile(){
+
 	}
 
 	public String getDate() throws InterruptedException{
@@ -121,7 +178,7 @@ public class Journal{
 		}
 
 		if(this.checkDate(month, day, year)){
-			return month.toUpperCase() + "/" + day + "/" + year;
+			return month.toUpperCase() + " " + day + ", " + year;
 		}
 		
 		return "invalid";
