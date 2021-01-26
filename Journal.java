@@ -29,6 +29,9 @@ public class Journal{
 						"september", "sept", "sep", "9", "09", "october", "oct", "10",
 						"november", "nov", "11", "december", "dec", "12"};
 
+	String blank = " ";
+	String dash = "-";
+
 	public Journal(){
 		this.questions = questions;
 		this.answers = new String[this.questions.length];
@@ -117,14 +120,37 @@ public class Journal{
 
 	public void writeToFile(){
 		try{
-			this.writer.write(this.date + "Journal \n");
-			this.writer.write("test");
+			this.writer.write(this.date + "Journal \n \n");
+			this.writeEntries();
 			this.writer.close();
 		} catch(IOException e){
 			System.out.println("Error");
 			return;
 		}
 		System.out.println("Success");
+	}
+
+	public void writeEntries() throws IOException{
+		for(int i = 0; i < this.questions.length; i++){
+			if(i % 2 == 0 && i != this.questions.length-1){
+				this.writer.write(this.questions[i]);
+			}
+			else if(i % 2 == 1){
+				this.writer.write(blank.repeat(75 - this.questions[i-1].length()) + this.questions[i] + "\n");
+				this.writer.write(dash.repeat(this.questions[i-1].length()) +
+									blank.repeat(75 - this.questions[i-1].length())+ 
+									dash.repeat(this.questions[i].length()) +
+									"\n");
+				this.writer.write(blank.repeat(2) + this.answers[i-1] + 
+									blank.repeat((75 - this.questions[i-1].length()) + (this.questions[i-1].length() - this.answers[i-1].length())) +
+									this.answers[i] + "\n");
+			}
+			else{
+				this.writer.write(this.questions[i] + "\n");
+				this.writer.write(dash.repeat(this.questions[i].length()) + "\n");
+				this.writer.write(blank.repeat(2) + this.answers[i] + "\n");
+			}
+		}
 	}
 
 	public String getDate() throws InterruptedException{
