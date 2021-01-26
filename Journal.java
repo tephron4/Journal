@@ -15,8 +15,10 @@ public class Journal{
 	String[] questions = {"How was your day? (1-10)", "Did you code today?", "Did you read today and what did you read?", "Workout?", "How much water did you drink?"};
 	private String[] answers;
 	String date;
+
+	private String filePath;
 	private File entry;
-	FileWriter writer;
+	private FileWriter writer;
 
 	Scanner scan;
 
@@ -40,6 +42,7 @@ public class Journal{
 			try{
 				this.date = this.getDate();
 				if(this.date.equals("quit")) System.exit(0);
+				this.filePath = "C:\\Users\\tobia\\JournalEntries\\" + this.date + "journal.txt";
 			} catch(InterruptedException e){
 				continue;
 			}
@@ -66,12 +69,13 @@ public class Journal{
 		//j.printDisplay();
 
 		j.menu();
+
+		j.writeToFile();
 	}
 
 	public boolean makeFile(){
-		String filePath = "C:\\Users\\tobia\\JournalEntries" + this.date + "journal.txt";
 		try{
-			this.entry = new File("C:\\Users\\tobia\\JournalEntries\\" + this.date + "journal.txt");
+			this.entry = new File(this.filePath);
 			if(!this.entry.createNewFile()){
 				System.out.println("A journal for " + this.date + " has already been created.");
 				try{
@@ -96,7 +100,7 @@ public class Journal{
 
 	public boolean makeFileWriter(){
 		try{
-				this.writer = new FileWriter("C:\\Users\\tobia\\JournalEntries" + this.date + "journal.txt");
+				this.writer = new FileWriter(this.filePath);
 
 			} catch(IOException e){
 				System.out.println("");
@@ -112,7 +116,15 @@ public class Journal{
 	}
 
 	public void writeToFile(){
-
+		try{
+			this.writer.write(this.date + "Journal \n");
+			this.writer.write("test");
+			this.writer.close();
+		} catch(IOException e){
+			System.out.println("Error");
+			return;
+		}
+		System.out.println("Success");
 	}
 
 	public String getDate() throws InterruptedException{
