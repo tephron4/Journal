@@ -2,7 +2,7 @@
 
 A program that has fields/questions to fill in for the day.
   - The TerminalJournal.java program will run in the terminal.
-  - Journal.java program will (eventually) run through a GUI.
+  - The GUI.java program will eventually be a full gui version of the journal program.
   
 Journal (the answers) are written to a file and saved so that it (or they) can be viewed later.
 
