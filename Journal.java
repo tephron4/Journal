@@ -131,6 +131,10 @@ public class Journal{
 		}
 	}
 
+	public void setDate(String d){
+		this.date = d;
+	}
+
 	public String parseDate(String date){
 		String month = "";
 		String day = "";
