@@ -25,8 +25,8 @@ public class GUI implements ActionListener {
 	private static JLabel loginSuccess;
 	
 	public GUI() {
-		
-		// Login section:
+
+		// Login Section:
 		
 		loginPanel = new JPanel();
 		loginFrame = new JFrame();
@@ -63,7 +63,6 @@ public class GUI implements ActionListener {
 		loginPanel.add(loginSuccess);
 		
 		loginFrame.setVisible(true);
-
 		
 		// Journal Section:
 		
@@ -75,17 +74,38 @@ public class GUI implements ActionListener {
 		journalFrame.add(journalPanel);
 		
 		journalPanel.setLayout(null);
-		
-		
+
+		JLabel dateLabel = new JLabel("Date (MM/DD/YYYY):");
+		dateLabel.setBounds(90, 10, 120, 25);
+		journalPanel.add(dateLabel);
+
+		JTextField dateField = new JTextField();
+		dateField.setBounds(210, 10, 165, 25);
+		journalPanel.add(dateField);
+
+		Journal j = new Journal();
+
 		
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		GUI g = new GUI();
+
+
+		/*int row = 0;
+		int col = 0;
+		for(int i = 0; i < j.questions.length; i++){
+			JLabel qLabel = new JLabel(j.questions[i]);
+			
+		}*/
+
 	}
 
-	@Override
+	public void runLogin(){
+
+	}
+
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		String u = usernameField.getText();
