@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Journal{
 
-	String[] questions = {"How was your day? (1-10)", "Did you code today?", "Did you read today and what did you read?", "Workout?", "How much water did you drink?"};
+	String[] questions = {"How was your day? (1-10)", "Did you code today?", "Did you read today?", "Workout?", "How much water did you drink?"};
 	private String[] answers;
 	String date;
 
@@ -133,6 +133,10 @@ public class Journal{
 
 	public void setDate(String d){
 		this.date = d;
+	}
+
+	public String[] getQuestions(){
+		return this.questions;
 	}
 
 	public String parseDate(String date){
