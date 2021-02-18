@@ -28,6 +28,10 @@ public class GUI {
 	private static JTextField dateField;
 	private static JButton dateButton;
 	private static JLabel dateCheckSuccess;
+
+	private static JLabel[] qLabels;
+	private static JTextField[] qTextFields;
+	private static String[] questions;
 	
 	public GUI() {
 
@@ -98,35 +102,62 @@ public class GUI {
 		journalPanel.setLayout(null);
 
 		dateLabel = new JLabel("Date (MM/DD/YYYY):");
-		dateLabel.setBounds(80, 10, 120, 25);
+		dateLabel.setBounds(130, 10, 110, 25);
 		journalPanel.add(dateLabel);
 
 		dateField = new JTextField();
-		dateField.setBounds(200, 10, 165, 25);
+		dateField.setBounds(260, 10, 120, 25);
 		journalPanel.add(dateField);
 
-		dateButton = new JButton("Set Date");
+		dateButton = new JButton("Check Date");
 		dateButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				String d = dateField.getText();
+				String d = dateField.getText().toLowerCase();
 				d = j.parseDate(d);
 				if(d.equals("invalid")){
 					dateCheckSuccess.setText("Invalid Date");
 				}
 				else{
 					j.setDate(d);
-					dateCheckSuccess.setText("Success");
+					dateCheckSuccess.setText("Valid Date");
 				}
 			}
 		});
-		dateButton.setBounds(100, 40, 90, 25);
+		dateButton.setBounds(140, 40, 100, 25);
 		journalPanel.add(dateButton);
 
 		dateCheckSuccess = new JLabel("");
-		dateCheckSuccess.setBounds(200, 40, 300, 25);
+		dateCheckSuccess.setBounds(260, 40, 120, 25);
 		journalPanel.add(dateCheckSuccess);
 
+		questions = j.getQuestions();
 		
+		qLabels = new JLabel[questions.length];
+		for(int i = 0; i < qLabels.length; i++){
+			qLabels[i] = new JLabel(questions[i]);
+		}
+		
+		qTextFields = new JTextField[qLabels.length];
+		for(int i = 0; i < qTextFields.length; i++){
+			qTextFields[i] = new JTextField();
+		}
+
+		for(int i = 0; i < qLabels.length; i += 2){
+			qLabels[i].setBounds(40, 75 + 65 * i, 220, 25);
+			journalPanel.add(qLabels[i]);
+
+			qTextFields[i].setBounds(40, 105 + 65 * i, 150, 25);
+			journalPanel.add(qTextFields[i]);
+
+			if(i != qLabels.length-1){
+				qLabels[i+1].setBounds(280, 75 + 65 * i, 220, 25);
+				journalPanel.add(qLabels[i+1]);
+
+				qTextFields[i+1].setBounds(280, 105 + 65 * i, 150, 25);
+				journalPanel.add(qTextFields[i+1]);
+			}
+		}
+
 	}
 	
 	public static void main(String[] args) {
