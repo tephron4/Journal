@@ -32,6 +32,9 @@ public class GUI {
 	private static JLabel[] qLabels;
 	private static JTextField[] qTextFields;
 	private static String[] questions;
+
+	private static JButton finishButton;
+	private static JLabel finishSuccess;
 	
 	public GUI() {
 
@@ -157,6 +160,32 @@ public class GUI {
 				journalPanel.add(qTextFields[i+1]);
 			}
 		}
+
+		finishSuccess = new JLabel("");
+		finishSuccess.setBounds(190, 715, 120, 25);
+
+		finishButton = new JButton("Finish");
+		finishButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				dateButton.doClick();
+				if(dateCheckSuccess.getText().equals("Valid Date")){
+					if(!j.makeFile()){
+						finishSuccess.setText("Journal for this date \n already made.");
+					}
+					else{
+						dateCheckSuccess.setText("Valid Date");
+						finishSuccess.setText("Done");
+						finishSuccess.setBounds(240, 685, 20, 25);
+						journalPanel.remove(dateButton);
+						journalPanel.remove(dateCheckSuccess);
+						journalPanel.updateUI();
+					}
+				}
+			}
+		});
+		finishButton.setBounds(210, 685, 80, 25);
+		journalPanel.add(finishButton);
+		journalPanel.add(finishSuccess);
 
 	}
 	
