@@ -133,6 +133,7 @@ public class Journal{
 
 	public void setDate(String d){
 		this.date = d;
+		this.filePath = "C:\\Users\\tobia\\JournalEntries\\" + d + "journal.txt";
 	}
 
 	public String[] getQuestions(){
