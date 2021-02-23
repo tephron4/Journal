@@ -105,7 +105,7 @@ public class Journal{
 			System.out.println("Error");
 			return;
 		}
-		System.out.println("Success");
+		// System.out.println("Success");
 	}
 
 	public void writeEntries() throws IOException{
@@ -138,6 +138,16 @@ public class Journal{
 
 	public String[] getQuestions(){
 		return this.questions;
+	}
+
+	public void setAnswer(String a, int index){
+		this.answers[index] = a;
+	}
+
+	public void reset(){
+		this.answers = new String[this.questions.length];
+		this.date = "";
+		this.filePath = "";
 	}
 
 	public String parseDate(String date){
