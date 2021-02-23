@@ -14,8 +14,8 @@ public class GUI {
 	
 	private static JPanel loginPanel;
 	private static JFrame loginFrame;
-	private static JPanel choosePanel;
-	private static JFrame chooseFrame;
+	private static JPanel menuPanel;
+	private static JFrame menuFrame;
 	private static JPanel journalPanel;
 	private static JFrame journalFrame;
 	private static JPanel editPanel;
@@ -86,7 +86,7 @@ public class GUI {
 					usernameField.setText("");
 					passwordField.setText("");
 					loginFrame.setVisible(false);
-					chooseFrame.setVisible(true);
+					menuFrame.setVisible(true);
 				}
 				else {
 					loginSuccess.setText("Incorrect Username or Password");
@@ -102,36 +102,36 @@ public class GUI {
 		
 		loginFrame.setVisible(true);
 
-		// Choose Section:
+		// Menu Section:
 
-		choosePanel = new JPanel();
-		chooseFrame = new JFrame();
-		chooseFrame.setSize(320,160);
-		chooseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		chooseFrame.setTitle("Choose Frame");
-		chooseFrame.add(choosePanel);
+		menuPanel = new JPanel();
+		menuFrame = new JFrame();
+		menuFrame.setSize(320,160);
+		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		menuFrame.setTitle("Menu Frame");
+		menuFrame.add(menuPanel);
 
-		choosePanel.setLayout(null);
+		menuPanel.setLayout(null);
 
 		newPageButton = new JButton("New Page");
 		newPageButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				chooseFrame.setVisible(false);
+				menuFrame.setVisible(false);
 				journalFrame.setVisible(true);
 			}
 		});
 		newPageButton.setBounds(100, 20, 100, 35);
-		choosePanel.add(newPageButton);
+		menuPanel.add(newPageButton);
 
 		editPageButton = new JButton("Edit Page");
 		editPageButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				chooseFrame.setVisible(false);
+				menuFrame.setVisible(false);
 				editFrame.setVisible(true);
 			}
 		});
 		editPageButton.setBounds(100, 75, 100, 35);
-		choosePanel.add(editPageButton);
+		menuPanel.add(editPageButton);
 
 		// Back button defining:
 
@@ -156,7 +156,7 @@ public class GUI {
 		backButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				editFrame.setVisible(false);
-				chooseFrame.setVisible(true);
+				menuFrame.setVisible(true);
 			}
 		});
 		editPanel.add(backButton);
@@ -260,7 +260,7 @@ public class GUI {
 		backButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				journalFrame.setVisible(false);
-				chooseFrame.setVisible(true);
+				menuFrame.setVisible(true);
 			}
 		});
 		journalPanel.add(backButton);
