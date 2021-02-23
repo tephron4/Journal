@@ -58,22 +58,22 @@ public class Journal{
 		try{
 			this.entry = new File(this.filePath);
 			if(!this.entry.createNewFile()){
-				System.out.println("A journal for " + this.date + " has already been created.");
+				/*System.out.println("A journal for " + this.date + " has already been created.");
 				try{
 					Thread.sleep(5000);
 				} catch(InterruptedException e){
 
-				}
+				}*/
 				return false;
 			}
 		} catch(IOException e){
 			System.out.println("");
 			System.out.print("FILE CREATION ERROR: " + e.getMessage());
-			try{
+			/*try{
 				Thread.sleep(5000);
 			} catch(InterruptedException ex){
 
-			}
+			}*/
 			return false;
 		}
 		return this.makeFileWriter();
@@ -86,11 +86,11 @@ public class Journal{
 			} catch(IOException e){
 				System.out.println("");
 				System.out.println("FILEWRITER CREATION ERROR: " + e.getMessage());
-				try{
+				/*try{
 					Thread.sleep(5000);
 				} catch(InterruptedException ex){
 					
-				}
+				}*/
 				return false;
 			}
 		return true;
