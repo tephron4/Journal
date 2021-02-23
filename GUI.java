@@ -14,15 +14,24 @@ public class GUI {
 	
 	private static JPanel loginPanel;
 	private static JFrame loginFrame;
+	private static JPanel choosePanel;
+	private static JFrame chooseFrame;
 	private static JPanel journalPanel;
 	private static JFrame journalFrame;
-	
+	private static JPanel editPanel;
+	private static JFrame editFrame;
+
+	private static JButton backButton;
+
 	private static JLabel usernameLabel;
 	private static JTextField usernameField;
 	private static JLabel passwordLabel;
 	private static JPasswordField passwordField;
 	private static JButton loginButton;
 	private static JLabel loginSuccess;
+
+	private static JButton newPageButton;
+	private static JButton editPageButton;
 
 	private static JLabel dateLabel;
 	private static JTextField dateField;
@@ -77,7 +86,7 @@ public class GUI {
 					usernameField.setText("");
 					passwordField.setText("");
 					loginFrame.setVisible(false);
-					journalFrame.setVisible(true);
+					chooseFrame.setVisible(true);
 				}
 				else {
 					loginSuccess.setText("Incorrect Username or Password");
@@ -92,6 +101,65 @@ public class GUI {
 		loginPanel.add(loginSuccess);
 		
 		loginFrame.setVisible(true);
+
+		// Choose Section:
+
+		choosePanel = new JPanel();
+		chooseFrame = new JFrame();
+		chooseFrame.setSize(320,160);
+		chooseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		chooseFrame.setTitle("Choose Frame");
+		chooseFrame.add(choosePanel);
+
+		choosePanel.setLayout(null);
+
+		newPageButton = new JButton("New Page");
+		newPageButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				chooseFrame.setVisible(false);
+				journalFrame.setVisible(true);
+			}
+		});
+		newPageButton.setBounds(100, 20, 100, 35);
+		choosePanel.add(newPageButton);
+
+		editPageButton = new JButton("Edit Page");
+		editPageButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				chooseFrame.setVisible(false);
+				editFrame.setVisible(true);
+			}
+		});
+		editPageButton.setBounds(100, 75, 100, 35);
+		choosePanel.add(editPageButton);
+
+		// Back button defining:
+
+		backButton = new JButton("BACK");
+
+		// Edit Section:
+
+		editPanel = new JPanel();
+		editFrame = new JFrame();
+		editFrame.setSize(500, 800);
+		editFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		editFrame.setTitle("Edit");
+		editFrame.add(editPanel);
+
+		editPanel.setLayout(null);
+
+		JLabel comingSoonLabel = new JLabel("Coming Soon");
+		comingSoonLabel.setBounds(200, 380, 120, 40);
+		editPanel.add(comingSoonLabel);
+
+		backButton.setBounds(10, 10, 70, 25);
+		backButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				editFrame.setVisible(false);
+				chooseFrame.setVisible(true);
+			}
+		});
+		editPanel.add(backButton);
 		
 		// Journal Section:
 		
@@ -162,7 +230,8 @@ public class GUI {
 		}
 
 		finishSuccess = new JLabel("");
-		finishSuccess.setBounds(190, 715, 120, 25);
+		finishSuccess.setBounds(197, 715, 120, 25);
+		journalPanel.add(finishSuccess);
 
 		finishButton = new JButton("Finish");
 		finishButton.addActionListener(new ActionListener(){
@@ -170,12 +239,12 @@ public class GUI {
 				dateButton.doClick();
 				if(dateCheckSuccess.getText().equals("Valid Date")){
 					if(!j.makeFile()){
-						finishSuccess.setText("Journal for this date \n already made.");
+						finishSuccess.setText("Date already used");
 					}
 					else{
-						dateCheckSuccess.setText("Valid Date");
+						dateCheckSuccess.setText("");
 						finishSuccess.setText("Done");
-						finishSuccess.setBounds(240, 685, 20, 25);
+						finishSuccess.setBounds(240, 715, 20, 25);
 						journalPanel.remove(dateButton);
 						journalPanel.remove(dateCheckSuccess);
 						journalPanel.updateUI();
@@ -185,7 +254,16 @@ public class GUI {
 		});
 		finishButton.setBounds(210, 685, 80, 25);
 		journalPanel.add(finishButton);
-		journalPanel.add(finishSuccess);
+
+		backButton = new JButton("BACK");
+		backButton.setBounds(10, 10, 70, 25);
+		backButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				journalFrame.setVisible(false);
+				chooseFrame.setVisible(true);
+			}
+		});
+		journalPanel.add(backButton);
 
 	}
 	
