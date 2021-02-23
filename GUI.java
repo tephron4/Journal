@@ -241,13 +241,21 @@ public class GUI {
 					if(!j.makeFile()){
 						finishSuccess.setText("Date already used");
 					}
-					else{
+					else{						
+						for(int i = 0; i < qTextFields.length; i++){
+							j.setAnswer(qTextFields[i].getText(), i);
+							qTextFields[i].setText("");
+						}
+						j.writeToFile();
+
+						dateField.setText("");
 						dateCheckSuccess.setText("");
-						finishSuccess.setText("Done");
-						finishSuccess.setBounds(240, 715, 20, 25);
-						journalPanel.remove(dateButton);
-						journalPanel.remove(dateCheckSuccess);
+						finishSuccess.setText("");
 						journalPanel.updateUI();
+
+						j.reset();
+						journalFrame.setVisible(false);
+						menuFrame.setVisible(true);
 					}
 				}
 			}
