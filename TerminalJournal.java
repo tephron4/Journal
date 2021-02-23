@@ -136,13 +136,13 @@ public class TerminalJournal{
 				this.writer.write(this.questions[i]);
 			}
 			else if(i % 2 == 1){
-				this.writer.write(blank.repeat(75 - this.questions[i-1].length()) + this.questions[i] + "\n");
+				this.writer.write(blank.repeat(50 - this.questions[i-1].length()) + this.questions[i] + "\n");
 				this.writer.write(dash.repeat(this.questions[i-1].length()) +
-									blank.repeat(75 - this.questions[i-1].length())+ 
+									blank.repeat(50 - this.questions[i-1].length())+ 
 									dash.repeat(this.questions[i].length()) +
 									"\n");
 				this.writer.write(blank.repeat(2) + this.answers[i-1] + 
-									blank.repeat((75 - this.questions[i-1].length()) + (this.questions[i-1].length() - this.answers[i-1].length())) +
+									blank.repeat((50 - this.questions[i-1].length()) + (this.questions[i-1].length() - this.answers[i-1].length())) +
 									this.answers[i] + "\n");
 			}
 			else{
