@@ -2,6 +2,14 @@
     <app-header></app-header>
 
     <div class="content">
-        <app-calendar></app-calendar>
+        <app-calendar
+            *ngIf="!this.showDay"
+            (changeDay)="changeDay($event)">
+        </app-calendar>
+
+        <app-day 
+            *ngIf="this.showDay"
+            [date]="this.date">
+        </app-day>
     </div>
 </div>
