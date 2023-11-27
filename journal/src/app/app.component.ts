@@ -36,5 +36,6 @@ export class AppComponent {
 
   toggleDayView(show: boolean) {
     this.showDay = show;
+    if(!show) this.date = undefined;
   }
 }
