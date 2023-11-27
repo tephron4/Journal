@@ -21,9 +21,9 @@ export class CalendarComponent {
   selectedDate() {
     if (this.selected !== null) {
       const newDate: DateType = {
-        month: this.selected.getMonth().toString(),
-        day: this.selected.getDate().toString(),
-        year: this.selected.getFullYear().toString(),
+        month: this.selected.getMonth() + 1,
+        day: this.selected.getDate(),
+        year: this.selected.getFullYear(),
       }
       this.changeDay.emit(newDate);
     }

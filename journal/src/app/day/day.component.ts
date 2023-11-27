@@ -22,12 +22,47 @@ export class DayComponent implements OnChanges {
   }
 
   displayDate(): string {
-    return this.date?.month + '/' +
-      this.date?.day + '/' +
-      this.date?.year;
+    if (this.date !== undefined) {
+      return this.getMonthName(this.date?.month) + ' ' +
+        this.date?.day + ', ' +
+        this.date?.year;
+    }
+    
+    return 'Undefined date';
   }
 
   back() {
     this.toggleDayView.emit(false);
+  }
+
+  getMonthName(m: Number) {
+    switch (m) {
+      case 1:
+        return 'January';
+      case 2:
+        return 'February';
+      case 3:
+        return 'March';
+      case 4:
+        return 'April';
+      case 5: 
+        return 'May';
+      case 6:
+        return 'June';
+      case 7:
+        return 'July';
+      case 8:
+        return 'August';
+      case 9:
+        return 'September';
+      case 10:
+        return 'October';
+      case 11:
+        return 'November'; 
+      case 12:
+        return 'December';
+      default:
+        return 'Unknown month: ' + m;
+    }
   }
 }

@@ -6,9 +6,9 @@ import { DayComponent } from './day/day.component';
 import { HeaderComponent } from './header/header.component';
 
 export interface DateType {
-  month: string;
-  day: string;
-  year: string;
+  month: Number;
+  day: Number;
+  year: Number;
 }
 
 @Component({
