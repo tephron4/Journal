@@ -2,13 +2,14 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TodoComponent } from '../todo/todo.component';
 
 import { DateType } from '../app.component';
 
 @Component({
   selector: 'app-day',
   standalone: true,
-  imports: [CommonModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [CommonModule, MatDatepickerModule, MatNativeDateModule, TodoComponent],
   templateUrl: './day.component.html',
   styleUrl: './day.component.css'
 })
