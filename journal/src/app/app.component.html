@@ -1,5 +1,7 @@
 <div class="app">
-    <app-header></app-header>
+    <app-header
+        (toggleDayView)="toggleDayView($event)">
+    </app-header>
 
     <div class="content">
         <app-calendar

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -15,7 +15,6 @@ import { DateType } from '../app.component';
 })
 export class DayComponent implements OnChanges {
   @Input() date?: DateType;
-  @Output() toggleDayView = new EventEmitter<boolean>();
 
   ngOnChanges(changes: SimpleChanges) {
     this.date = changes['date'].currentValue;
@@ -29,10 +28,6 @@ export class DayComponent implements OnChanges {
     }
     
     return 'Undefined date';
-  }
-
-  back() {
-    this.toggleDayView.emit(false);
   }
 
   getMonthName(m: Number) {
