@@ -1,0 +1,8 @@
+.todo-field {
+    width: 50%;
+    height: 500px;
+}
+
+textarea.todo {
+    resize: none;
+}
