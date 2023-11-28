@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -29,9 +29,14 @@ export class AppComponent {
   showDay = false;
   date?: DateType;
 
+  constructor(private ref: ChangeDetectorRef) {}
+
   changeDay(newDate: DateType) {
+    this.toggleDayView(false);
+    this.ref.detectChanges();
     this.date = newDate;
     this.toggleDayView(true);
+    console.log('Changed the date to: ', newDate);
   }
 
   toggleDayView(show: boolean) {

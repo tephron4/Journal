@@ -3,7 +3,21 @@
     text-align: center;
 }
 
+.day-header {
+    width: 100%;
+    text-align: center;
+}
+
+.previous-day {
+    display: inline-block;
+}
+
+.next-day {
+    display: inline-block;
+}
+
 .date-title {
+    display: inline-block;
     font-weight: 1000;
     font-size: xx-large;
 }

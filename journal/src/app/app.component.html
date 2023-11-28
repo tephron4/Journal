@@ -11,7 +11,8 @@
 
         <app-day 
             *ngIf="this.showDay"
-            [date]="this.date">
+            [date]="this.date"
+            (changeDay)="changeDay($event)">
         </app-day>
     </div>
 </div>
