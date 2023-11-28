@@ -1,7 +1,23 @@
 <div class="day">
-    <h2 class="date-title">
-        {{ this.displayDate() }}
-    </h2>
+    <div class="day-header">
+        <button 
+            mat-icon-button 
+            class="previous-day" 
+            aria-label=""
+            (click)="previousDay()">
+            <mat-icon>arrow_backward</mat-icon>
+        </button>
+        <h2 class="date-title">
+            {{ this.displayDate() }}
+        </h2>
+        <button 
+            mat-icon-button 
+            class="next-day" 
+            aria-label=""
+            (click)="nextDay()">
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+    </div>
 
-    <app-todo></app-todo>
+    <app-todo [todoText]="todoText"></app-todo>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,5 +11,5 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './todo.component.css'
 })
 export class TodoComponent {
-
+  @Input() todoText: string = 'test';
 }
