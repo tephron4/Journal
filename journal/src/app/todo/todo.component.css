@@ -1,8 +1,19 @@
-.todo-field {
-    width: 50%;
+.todo {
+    width: 75%;
     height: 500px;
+    padding-right: 12.5%;
+    padding-left: 12.5%;
 }
 
-textarea.todo {
-    resize: none;
+.todo-title {
+    font-weight: 1000;
+    font-size: large;
+}
+
+.items {
+    max-height: 500px;
+}
+
+.add-icon {
+    margin-top: 10px;
 }

@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './day/day.component';
 import { HeaderComponent } from './header/header.component';
+import { TodoData } from './todo-item/todo-item.component';
 
 export interface DateType {
   month: Number;
@@ -30,6 +31,8 @@ export class AppComponent {
   username = '';
   password = '';
   loggedIn = false;
+
+  todoItems: TodoData[] = [];
 
   constructor(private ref: ChangeDetectorRef) {}
 
@@ -67,5 +70,17 @@ export class AppComponent {
     this.password = '';
     this.loggedIn = false;
     console.log('Logged Out');
+  }
+
+  addTodoItem() {
+    this.todoItems.push({done: false, description: ''});
+  }
+
+  deleteTodoItem(index: number) {
+    this.todoItems.splice(index, 1);
+  }
+
+  updateTodoItem(item: {index: number, data: TodoData}) {
+    this.todoItems.splice(item.index, 1, item.data);
   }
 }

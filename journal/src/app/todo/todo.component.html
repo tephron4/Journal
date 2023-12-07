@@ -1,8 +1,19 @@
-<mat-form-field class="todo-field">
-    <mat-label>TO-DO:</mat-label>
-    <textarea 
-        class="todo" 
-        matInput
-        rows="17"
-        [value]="this.todoText"></textarea>
-</mat-form-field>
+<div class="todo">
+    <mat-label class="todo-title">TO-DO:</mat-label>
+    <div class="items">
+        <app-todo-item 
+            *ngFor="let item of todoItems"
+            [data]="item"
+            [index]="getIndex(item)"
+            (deleteTodoItem)="deleteItem($event)"
+            (updateTodoItem)="updateItem($event)"
+        ></app-todo-item>
+    </div>
+    <button
+        mat-icon-button
+        class="add-icon"
+        arial-label="Add button"
+        (click)="addItem()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>

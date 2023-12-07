@@ -1,0 +1,18 @@
+.todo-item {
+    width: 100%;
+    margin-top: 10px;
+    height: fit-content;
+}
+
+.todo-checkbox {
+    display: inline-block;
+}
+
+.todo-description {
+    display: inline-block;
+    width: 80%;
+}
+
+.delete-icon {
+    display: inline-block;
+}
