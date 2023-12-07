@@ -1,6 +1,10 @@
 <div class="app">
     <app-header
-        (toggleDayView)="toggleDayView($event)">
+        (toggleDayView)="toggleDayView($event)"
+        (signUp)="signUp($event)"
+        (logOut)="logOut()"
+        [username]="username"
+        [loggedIn]="loggedIn">
     </app-header>
 
     <div class="content">

@@ -1,3 +1,13 @@
 .spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
+
+.dialog-actions {
+  margin-left: 24px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.entry-field {
+  width: 252px;
+}

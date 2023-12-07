@@ -24,10 +24,12 @@ export interface DateType {
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'journal';
-
   showDay = false;
   date?: DateType;
+
+  username = '';
+  password = '';
+  loggedIn = false;
 
   constructor(private ref: ChangeDetectorRef) {}
 
@@ -42,5 +44,20 @@ export class AppComponent {
   toggleDayView(show: boolean) {
     this.showDay = show;
     if(!show) this.date = undefined;
+  }
+
+  signUp(info: {username: string, password: string}) {
+    this.username = info.username;
+    this.password = info.password;
+    this.loggedIn = true;
+    console.log('Username: ', this.username);
+    console.log('Password: ', this.password);
+  }
+
+  logOut() {
+    this.username = '';
+    this.password = '';
+    this.loggedIn = false;
+    console.log('Logged Out');
   }
 }
