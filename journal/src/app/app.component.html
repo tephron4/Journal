@@ -10,14 +10,18 @@
 
     <div class="content">
         <app-calendar
-            *ngIf="!this.showDay"
+            *ngIf="!showDay"
             (changeDay)="changeDay($event)">
         </app-calendar>
 
         <app-day 
-            *ngIf="this.showDay"
-            [date]="this.date"
-            (changeDay)="changeDay($event)">
+            *ngIf="showDay"
+            [date]="date"
+            [todoItems]="todoItems"
+            (changeDay)="changeDay($event)"
+            (addTodoItem)="addTodoItem()"
+            (deleteTodoItem)="deleteTodoItem($event)"
+            (updateTodoItem)="updateTodoItem($event)">
         </app-day>
     </div>
 </div>

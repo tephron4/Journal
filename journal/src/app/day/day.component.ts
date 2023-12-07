@@ -7,6 +7,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { TodoComponent } from '../todo/todo.component';
 
 import { DateType } from '../app.component';
+import { TodoData } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-day',
@@ -17,7 +18,11 @@ import { DateType } from '../app.component';
 })
 export class DayComponent {
   @Input() date?: DateType;
+  @Input() todoItems: TodoData[] = [];
   @Output() changeDay = new EventEmitter<DateType>();
+  @Output() addTodoItem = new EventEmitter<any>();
+  @Output() deleteTodoItem = new EventEmitter<number>();
+  @Output() updateTodoItem = new EventEmitter<any>();
 
   todoText: string = '';
 
@@ -137,5 +142,17 @@ export class DayComponent {
         console.log('default 31');
         return 31;
     }
+  }
+
+  addItem() {
+    this.addTodoItem.emit();
+  }
+
+  deleteItem(index: number) {
+    this.deleteTodoItem.emit(index);
+  }
+
+  updateItem(item: {index: number, data: TodoData}) {
+    this.updateTodoItem.emit(item);
   }
 }

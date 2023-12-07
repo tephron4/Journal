@@ -19,5 +19,10 @@
         </button>
     </div>
 
-    <app-todo [todoText]="todoText"></app-todo>
+    <app-todo
+        [todoItems]="todoItems"
+        (addTodoItem)="addItem()"
+        (deleteTodoItem)="deleteItem($event)"
+        (updateTodoItem)="updateItem($event)"
+    ></app-todo>
 </div>

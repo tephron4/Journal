@@ -1,0 +1,17 @@
+<mat-form-field class="todo-item">
+    <mat-checkbox 
+        class="todo-checkbox" 
+        [(ngModel)]="data.done"
+    ></mat-checkbox>
+    <input
+        class="todo-description"
+        matInput
+        [(ngModel)]="data.description">
+    <button
+        mat-icon-button
+        class="delete-icon"
+        arial-label="Delete button"
+        (click)="deleteItem()">
+        <mat-icon>delete</mat-icon>
+    </button>
+</mat-form-field>
