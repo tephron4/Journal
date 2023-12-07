@@ -1,4 +1,5 @@
-<h1 *ngIf="!data.loggedIn" mat-dialog-title>Signup!</h1>
+<h1 *ngIf="!data.loggedIn && signUp" mat-dialog-title>Sign Up!</h1>
+<h1 *ngIf="!data.loggedIn && !signUp" mat-dialog-title>Login!</h1>
 <h1 *ngIf="data.loggedIn" mat-dialog-title>Logged In!</h1>
 <div *ngIf="!data.loggedIn" mat-dialog-content>
     <mat-form-field class="entry-field">
@@ -28,7 +29,7 @@
         </button>
         <mat-error *ngIf="passwordForm.invalid">Please enter a password</mat-error>
     </mat-form-field>
-    <mat-form-field class="entry-field">
+    <mat-form-field *ngIf="signUp" class="entry-field">
         <mat-label>Retype Password</mat-label>
         <input 
             matInput 
@@ -52,14 +53,17 @@
             Passwords do not match
         </mat-error>
     </mat-form-field>
-    <p>{{ retypePasswordForm.hasError('required') }}</p>
-    <p>{{ retypePasswordForm.hasError('passwordMismatch') }}</p>
+</div>
+<div *ngIf="!data.loggedIn && signUp" mat-dialog-actions class="dialog-actions">
+    <button mat-button [mat-dialog-close]="['signup', data.username, data.password]" cdkFocusInitial>Sign Up</button>
+    <button mat-button (click)="switchAccountEntry()" cdkFocusInitial>Log In</button>
+</div>
+<div *ngIf="!data.loggedIn && !signUp" mat-dialog-actions class="dialog-actions">
+    <button mat-button [mat-dialog-close]="['login', data.username, data.password]" cdkFocusInitial>Log In</button>
+    <button mat-button (click)="switchAccountEntry()" cdkFocusInitial>Sign Up</button>
 </div>
 <div *ngIf="data.loggedIn" mat-dialog-content>
     You are logged in as {{ data.username }}
-</div>
-<div *ngIf="!data.loggedIn" mat-dialog-actions class="dialog-actions">
-    <button mat-button [mat-dialog-close]="[data.username, data.password]" cdkFocusInitial>Signup</button>
 </div>
 <div *ngIf="data.loggedIn" mat-dialog-actions class="dialog-actions">
     <button mat-button [mat-dialog-close]="['logout', 'logout']" cdkFocusInitial>Logout</button>

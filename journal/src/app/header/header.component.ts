@@ -24,6 +24,7 @@ export interface DialogData {
 export class HeaderComponent {
   @Output() toggleDayView = new EventEmitter<boolean>();
   @Output() signUp = new EventEmitter<any>();
+  @Output() logIn = new EventEmitter<any>();
   @Output() logOut = new EventEmitter<void>();
   @Input() username = '';
   @Input() loggedIn: boolean = false;
@@ -44,9 +45,13 @@ export class HeaderComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result[0] !== 'logout') {
-        this.username = result[0];
-        this.password = result[1];
-        this.signUp.emit({username: this.username, password: this.password});
+        this.username = result[1];
+        this.password = result[2];
+        if (result[0] === 'signup') {
+          this.signUp.emit({username: this.username, password: this.password});
+        } else if (result[0] === 'login') {
+          this.logIn.emit({username: this.username, password: this.password});
+        }
       } else {
         this.password = '';
         this.logOut.emit();
@@ -81,6 +86,8 @@ export class AccountDialog {
   hidePass = true;
   hideRetypePass = true;
 
+  signUp = true;
+
   constructor(
     public dialogRef: MatDialogRef<AccountDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -102,5 +109,9 @@ export class AccountDialog {
     } else {
       this.retypePasswordForm.setErrors(null);
     }
+  }
+
+  switchAccountEntry() {
+    this.signUp = !this.signUp;
   }
 }

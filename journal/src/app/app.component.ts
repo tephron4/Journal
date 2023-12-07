@@ -54,6 +54,14 @@ export class AppComponent {
     console.log('Password: ', this.password);
   }
 
+  logIn(info: {username: string, password: string}) {
+    this.username = info.username;
+    this.password = info.password;
+    this.loggedIn = true;
+    console.log('Username: ', this.username);
+    console.log('Password: ', this.password);
+  }
+
   logOut() {
     this.username = '';
     this.password = '';
