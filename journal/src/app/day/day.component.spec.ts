@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DayComponent } from './day.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DayComponent', () => {
   let component: DayComponent;
@@ -8,7 +9,7 @@ describe('DayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DayComponent]
+      imports: [DayComponent, NoopAnimationsModule]
     })
     .compileComponents();
     
