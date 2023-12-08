@@ -1,0 +1,10 @@
+.steps {
+    width: 100px;
+    height: 80px;
+    padding-left: 12.5%;
+}
+
+.steps-title {
+    font-weight: 1000;
+    font-size: large;
+}

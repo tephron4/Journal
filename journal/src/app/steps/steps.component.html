@@ -1,0 +1,10 @@
+<mat-form-field class="steps">
+    <mat-label class="steps-title">Steps</mat-label>
+    <input
+        matInput
+        class="steps-input"
+        type="number"
+        [min]="0"
+        [(ngModel)]="steps"
+        (input)="saveSteps()">
+</mat-form-field>

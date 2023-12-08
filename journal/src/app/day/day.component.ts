@@ -7,6 +7,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { DateType } from '../app.component';
 import { NotesComponent } from '../notes/notes.component';
+import { StepsComponent } from '../steps/steps.component';
 import { TodoComponent } from '../todo/todo.component';
 import { TodoData } from '../todo-item/todo-item.component';
 
@@ -20,6 +21,7 @@ import { TodoData } from '../todo-item/todo-item.component';
     MatIconModule,
     MatNativeDateModule,
     NotesComponent,
+    StepsComponent,
     TodoComponent,
   ],
   templateUrl: './day.component.html',
@@ -31,6 +33,7 @@ export class DayComponent {
 
   todoItems: TodoData[] = [];
   notesText = '';
+  steps: number = 0;
 
   displayDate(): string {
     if (this.date !== undefined) {
@@ -164,5 +167,9 @@ export class DayComponent {
 
   updateNotes(text: string) {
     this.notesText = text;
+  }
+
+  updateSteps(num: number) {
+    this.steps = num;
   }
 }
