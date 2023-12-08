@@ -26,6 +26,11 @@
         (updateTodoItem)="updateItem($event)"
     ></app-todo>
 
+    <app-steps
+        [steps]="steps"
+        (updateSteps)="updateSteps($event)"
+    ></app-steps>
+
     <app-notes
         [notes]="notesText"
         (updateNotes)="updateNotes($event)"

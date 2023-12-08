@@ -4,6 +4,7 @@
         matInput
         class="notes=field"
         [(ngModel)]="notes"
+        (input)="saveNotes()"
         rows="6"
     ></textarea>
 </mat-form-field>
