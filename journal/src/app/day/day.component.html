@@ -25,4 +25,9 @@
         (deleteTodoItem)="deleteItem($event)"
         (updateTodoItem)="updateItem($event)"
     ></app-todo>
+
+    <app-notes
+        [notes]="notesText"
+        (updateNotes)="updateNotes($event)"
+    ></app-notes>
 </div>
