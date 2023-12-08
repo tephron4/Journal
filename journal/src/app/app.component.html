@@ -17,11 +17,7 @@
         <app-day 
             *ngIf="showDay"
             [date]="date"
-            [todoItems]="todoItems"
-            (changeDay)="changeDay($event)"
-            (addTodoItem)="addTodoItem()"
-            (deleteTodoItem)="deleteTodoItem($event)"
-            (updateTodoItem)="updateTodoItem($event)">
+            (changeDay)="changeDay($event)">
         </app-day>
     </div>
 </div>
