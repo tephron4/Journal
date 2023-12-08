@@ -1,0 +1,11 @@
+.notes {
+    width: 75%;
+    height: 200px;
+    padding-right: 12.5%;
+    padding-left: 12.5%;
+}
+
+.notes-title {
+    font-weight: 1000;
+    font-size: large;
+}

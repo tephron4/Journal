@@ -4,15 +4,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
-import { TodoComponent } from '../todo/todo.component';
 
 import { DateType } from '../app.component';
+import { NotesComponent } from '../notes/notes.component';
+import { TodoComponent } from '../todo/todo.component';
 import { TodoData } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-day',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDatepickerModule, MatIconModule, MatNativeDateModule, TodoComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatNativeDateModule,
+    NotesComponent,
+    TodoComponent,
+  ],
   templateUrl: './day.component.html',
   styleUrl: './day.component.css'
 })
@@ -25,6 +34,7 @@ export class DayComponent {
   @Output() updateTodoItem = new EventEmitter<any>();
 
   todoText: string = '';
+  notesText = '';
 
   displayDate(): string {
     if (this.date !== undefined) {
@@ -154,5 +164,9 @@ export class DayComponent {
 
   updateItem(item: {index: number, data: TodoData}) {
     this.updateTodoItem.emit(item);
+  }
+
+  updateNotes(text: string) {
+    this.notesText = text;
   }
 }
