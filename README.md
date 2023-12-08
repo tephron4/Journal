@@ -16,6 +16,7 @@ A basic page with a calendar used to select the desired day for data entry and/o
 ### Day View
 
 A page for entering daily information and/or planning out the day. The support data entry methods currently supported are:
+* To Do List - user can manage a list of to do items, with checkboxes to track completion
 * Notes - for general notes about the day
 
 Also, the user can return to the calendar view and switch the day that is being viewed within the day view.
