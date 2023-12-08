@@ -27,13 +27,9 @@ import { TodoData } from '../todo-item/todo-item.component';
 })
 export class DayComponent {
   @Input() date?: DateType;
-  @Input() todoItems: TodoData[] = [];
   @Output() changeDay = new EventEmitter<DateType>();
-  @Output() addTodoItem = new EventEmitter<any>();
-  @Output() deleteTodoItem = new EventEmitter<number>();
-  @Output() updateTodoItem = new EventEmitter<any>();
 
-  todoText: string = '';
+  todoItems: TodoData[] = [];
   notesText = '';
 
   displayDate(): string {
@@ -155,15 +151,15 @@ export class DayComponent {
   }
 
   addItem() {
-    this.addTodoItem.emit();
+    this.todoItems.push({done: false, description: ''});
   }
 
   deleteItem(index: number) {
-    this.deleteTodoItem.emit(index);
+    this.todoItems.splice(index, 1);
   }
 
   updateItem(item: {index: number, data: TodoData}) {
-    this.updateTodoItem.emit(item);
+    this.todoItems.splice(item.index, 1, item.data);
   }
 
   updateNotes(text: string) {
