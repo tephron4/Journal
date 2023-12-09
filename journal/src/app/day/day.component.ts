@@ -12,6 +12,7 @@ import { StepsComponent } from '../steps/steps.component';
 import { TodoComponent } from '../todo/todo.component';
 import { TodoData } from '../todo-item/todo-item.component';
 import { WaterComponent } from '../water/water.component';
+import { FoodComponent } from '../food/food.component';
 
 export enum WaterMeasurement {
   OUNCES = 1,
@@ -40,6 +41,7 @@ export interface FoodIntake {
   imports: [
     CaloriesComponent,
     CommonModule,
+    FoodComponent,
     MatButtonModule,
     MatDatepickerModule,
     MatIconModule,
@@ -214,6 +216,7 @@ export class DayComponent {
 
   deleteFood(index: number) {
     this.food.foods.splice(index, 1);
+    this.updateCalories();
   }
 
   updateFood(item: {index: number, data: Food}) {

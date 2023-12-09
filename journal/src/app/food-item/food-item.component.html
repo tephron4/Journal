@@ -1,0 +1,22 @@
+<mat-form-field class="food-item">
+    <input
+        class="food-description"
+        matInput
+        [(ngModel)]="food.name"
+        (input)="update()"
+        placeholder="Name">
+    <input
+        matInput
+        class="calory-input"
+        type="number"
+        [min]="0"
+        [(ngModel)]="food.calories"
+        (input)="update()">
+    <button
+        mat-icon-button
+        class="delete-icon"
+        aria-label="Delete button"
+        (click)="delete()">
+        <mat-icon>delete</mat-icon>
+    </button>
+</mat-form-field>

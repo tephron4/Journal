@@ -1,0 +1,19 @@
+.food-item {
+    width: 100%;
+    margin-top: 10px;
+    height: fit-content;
+}
+
+.food-description {
+    display: inline-block;
+    width: 80%;
+}
+
+.calory-input {
+    display: inline-block;
+    width: 30px;
+}
+
+.delete-icon {
+    display: inline-block;
+}

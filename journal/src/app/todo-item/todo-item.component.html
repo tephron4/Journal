@@ -6,7 +6,8 @@
     <input
         class="todo-description"
         matInput
-        [(ngModel)]="data.description">
+        [(ngModel)]="data.description"
+        (input)="updateItem()">
     <button
         mat-icon-button
         class="delete-icon"

@@ -1,0 +1,19 @@
+<div class="food">
+    <mat-label class="food-title">Food:</mat-label>
+    <div class="items">
+        <app-food-item
+            *ngFor="let food of foods"
+            [food]="food"
+            [index]="getIndex(food)"
+            (deleteFood)="delete($event)"
+            (updateFood)="update($event)"
+        ></app-food-item>
+    </div>
+    <button
+        mat-icon-button
+        class="add-icon"
+        aria-label="Add button"
+        (click)="add()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>
