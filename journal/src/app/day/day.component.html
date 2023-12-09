@@ -19,13 +19,6 @@
         </button>
     </div>
 
-    <app-todo
-        [todoItems]="todoItems"
-        (addTodoItem)="addItem()"
-        (deleteTodoItem)="deleteItem($event)"
-        (updateTodoItem)="updateItem($event)"
-    ></app-todo>
-
     <app-steps
         [steps]="steps"
         (updateSteps)="updateSteps($event)"
@@ -36,6 +29,24 @@
         (updateTotal)="updateWaterTotal($event)"
         (updateType)="changeWaterMeasure($event)"
     ></app-water>
+
+    <app-calories
+        [calories]="food.totalCalories"
+    ></app-calories>
+
+    <app-todo
+        [todoItems]="todoItems"
+        (addTodoItem)="addItem()"
+        (deleteTodoItem)="deleteItem($event)"
+        (updateTodoItem)="updateItem($event)"
+    ></app-todo>
+
+    <app-food
+        [foods]="food.foods"
+        (addFood)="addFood()"
+        (deleteFood)="deleteFood($event)"
+        (updateFood)="updateFood($event)"
+    ></app-food>
 
     <app-notes
         [notes]="notesText"

@@ -1,0 +1,21 @@
+.food {
+    width: 75%;
+    height: fit-content;
+    padding-right: 12.5%;
+    padding-left: 12.5%;
+    margin-bottom: 20px;
+}
+
+.food-title {
+    font-weight: 1000;
+    font-size: large;
+}
+
+.items {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.add-icon {
+    margin-top: 10px;
+}
