@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { CaloriesComponent } from '../calories/calories.component';
 import { DateType } from '../app.component';
 import { NotesComponent } from '../notes/notes.component';
 import { StepsComponent } from '../steps/steps.component';
@@ -23,10 +24,21 @@ export interface WaterIntake {
   type: WaterMeasurement;
 }
 
+export interface Food {
+  name: string,
+  calories: number,
+}
+
+export interface FoodIntake {
+  totalCalories: number,
+  foods: Food[],
+}
+
 @Component({
   selector: 'app-day',
   standalone: true,
   imports: [
+    CaloriesComponent,
     CommonModule,
     MatButtonModule,
     MatDatepickerModule,
@@ -48,6 +60,7 @@ export class DayComponent {
   notesText = '';
   steps: number = 0;
   water: WaterIntake = {total: 0, type: WaterMeasurement.OUNCES};
+  food: FoodIntake = {totalCalories: 0, foods: []};
 
   displayDate(): string {
     if (this.date !== undefined) {
@@ -193,5 +206,26 @@ export class DayComponent {
 
   changeWaterMeasure(t: WaterMeasurement) {
     this.water.type = t;
+  }
+
+  addFood() {
+    this.food.foods.push({name: '', calories: 0});
+  }
+
+  deleteFood(index: number) {
+    this.food.foods.splice(index, 1);
+  }
+
+  updateFood(item: {index: number, data: Food}) {
+    this.food.foods.splice(item.index, 1, item.data);
+    this.updateCalories();
+  }
+
+  updateCalories() {
+    let count = 0;
+    for (var food of this.food.foods) {
+      count = count + food.calories;
+    }
+    this.food.totalCalories = count;
   }
 }

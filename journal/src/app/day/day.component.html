@@ -37,6 +37,10 @@
         (updateType)="changeWaterMeasure($event)"
     ></app-water>
 
+    <app-calories
+        [calories]="food.totalCalories"
+    ></app-calories>
+
     <app-notes
         [notes]="notesText"
         (updateNotes)="updateNotes($event)"

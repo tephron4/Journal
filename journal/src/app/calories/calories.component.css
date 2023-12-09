@@ -1,11 +1,10 @@
-.steps {
+.calories {
     width: 110px;
     height: 80px;
-    padding-left: 12.5%;
-    margin-right: 55px;
+    margin-left: 10px;
 }
 
-.steps-title {
+.calory-title {
     font-weight: 1000;
     font-size: large;
 }
