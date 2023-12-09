@@ -1,0 +1,23 @@
+<mat-form-field class="water">
+    <mat-label class="water-title">Water</mat-label>
+    <input
+        matInput
+        class="water-input"
+        type="number"
+        [min]="0"
+        [(ngModel)]="water.total"
+        (input)="changeTotal()">
+</mat-form-field>
+<mat-form-field class="water-type">
+    <mat-label class="water-title">Type</mat-label>
+    <mat-select 
+        class="water-type-selector"
+        [(value)]="water.type"
+        (valueChange)="changeType()">
+        <mat-option 
+            *ngFor="let type of getTypes()" 
+            value="type">
+            {{ getTypeString(type) }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

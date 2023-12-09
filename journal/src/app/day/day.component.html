@@ -31,6 +31,12 @@
         (updateSteps)="updateSteps($event)"
     ></app-steps>
 
+    <app-water
+        [water]="water"
+        (updateTotal)="updateWaterTotal($event)"
+        (updateType)="changeWaterMeasure($event)"
+    ></app-water>
+
     <app-notes
         [notes]="notesText"
         (updateNotes)="updateNotes($event)"

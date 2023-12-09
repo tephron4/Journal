@@ -1,0 +1,17 @@
+.water {
+    width: 120px;
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.water-type {
+    width: 120px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.water-title {
+    font-weight: 1000;
+    font-size: large;
+}
