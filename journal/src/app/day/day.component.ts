@@ -10,6 +10,18 @@ import { NotesComponent } from '../notes/notes.component';
 import { StepsComponent } from '../steps/steps.component';
 import { TodoComponent } from '../todo/todo.component';
 import { TodoData } from '../todo-item/todo-item.component';
+import { WaterComponent } from '../water/water.component';
+
+export enum WaterMeasurement {
+  OUNCES = 1,
+  CUPS = 2,
+  BOTTLES = 3,
+}
+
+export interface WaterIntake {
+  total: number;
+  type: WaterMeasurement;
+}
 
 @Component({
   selector: 'app-day',
@@ -23,6 +35,7 @@ import { TodoData } from '../todo-item/todo-item.component';
     NotesComponent,
     StepsComponent,
     TodoComponent,
+    WaterComponent,
   ],
   templateUrl: './day.component.html',
   styleUrl: './day.component.css'
@@ -34,6 +47,7 @@ export class DayComponent {
   todoItems: TodoData[] = [];
   notesText = '';
   steps: number = 0;
+  water: WaterIntake = {total: 0, type: WaterMeasurement.OUNCES};
 
   displayDate(): string {
     if (this.date !== undefined) {
@@ -171,5 +185,13 @@ export class DayComponent {
 
   updateSteps(num: number) {
     this.steps = num;
+  }
+
+  updateWaterTotal(val: number) {
+    this.water.total = val;
+  }
+
+  changeWaterMeasure(t: WaterMeasurement) {
+    this.water.type = t;
   }
 }
