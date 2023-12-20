@@ -1,0 +1,21 @@
+<div class="workout">
+    <mat-label class="workout-title">Workout:</mat-label>
+    <div class="exercises">
+        <app-exercise
+            class="exercise"
+            *ngFor="let exercise of workout.exercises"
+            [exercise]="exercise"
+            (deleteExercise)="delete($event)"
+            (updateExercise)="update($event)"
+            (moveUp)="moveUpExercise($event)"
+            (moveDown)="moveDownExercise($event)"
+        ></app-exercise>
+    </div>
+    <button
+        mat-icon-button
+        class="add-icon"
+        aria-label="Add button"
+        (click)="add()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>

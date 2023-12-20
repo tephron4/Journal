@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Time } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,12 +7,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { CaloriesComponent } from '../calories/calories.component';
 import { DateType } from '../app.component';
+import { FoodComponent } from '../food/food.component';
 import { NotesComponent } from '../notes/notes.component';
 import { StepsComponent } from '../steps/steps.component';
 import { TodoComponent } from '../todo/todo.component';
 import { TodoData } from '../todo-item/todo-item.component';
 import { WaterComponent } from '../water/water.component';
-import { FoodComponent } from '../food/food.component';
+import { WorkoutComponent } from '../workout/workout.component';
 
 export enum WaterMeasurement {
   OUNCES = 1,
@@ -35,6 +36,31 @@ export interface FoodIntake {
   foods: Food[],
 }
 
+export enum ExerciseType {
+  LIFTING = 1,
+  CARDIO = 2,
+}
+
+export enum WeightUnit {
+  POUNDS = 1,
+  KILOGRAMS = 2,
+}
+
+export interface Exercise {
+  desc: string,
+  type: ExerciseType,
+  sets?: number,
+  reps?: number,
+  weight?: number,
+  unit?: WeightUnit,
+  time?: Time,
+}
+
+export interface Workout {
+  time: Time,
+  exercises: Exercise[],
+}
+
 @Component({
   selector: 'app-day',
   standalone: true,
@@ -50,6 +76,7 @@ export interface FoodIntake {
     StepsComponent,
     TodoComponent,
     WaterComponent,
+    WorkoutComponent,
   ],
   templateUrl: './day.component.html',
   styleUrl: './day.component.css'
@@ -63,6 +90,7 @@ export class DayComponent {
   steps: number = 0;
   water: WaterIntake = {total: 0, type: WaterMeasurement.OUNCES};
   food: FoodIntake = {totalCalories: 0, foods: []};
+  workout: Workout = {time: {hours: 0, minutes: 0}, exercises: []};
 
   displayDate(): string {
     if (this.date !== undefined) {
@@ -230,5 +258,35 @@ export class DayComponent {
       count = count + food.calories;
     }
     this.food.totalCalories = count;
+  }
+
+  setWorkoutTime(time: Time) {
+    this.workout.time = time;
+  }
+
+  addExercise() {
+    this.workout.exercises.push({desc: '', type: ExerciseType.LIFTING});
+  }
+
+  deleteExercise(index: number) {
+    this.workout.exercises.splice(index, 1);
+  }
+
+  updateExercise(item: {index: number, data: Exercise}) {
+    this.workout.exercises.splice(item.index, 1, item.data);
+  }
+
+  moveExercise(indexes: {currIndex: number, newIndex: number}) {
+    const temp = this.workout.exercises[indexes.newIndex];
+    this.workout.exercises.splice(
+      indexes.newIndex,
+      1,
+      this.workout.exercises[indexes.currIndex]
+    );
+    this.workout.exercises.splice(
+      indexes.currIndex,
+      1,
+      temp
+    );
   }
 }

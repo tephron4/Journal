@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { TodoData, TodoItemComponent } from '../todo-item/todo-item.component';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-todo',

@@ -1,0 +1,64 @@
+.exercise {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.type-selector {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.description {
+    margin-left: 10px;
+    min-width: 50%;
+}
+
+.delete-icon {
+    margin-left: 10px;
+}
+
+.sets {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.reps {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.weight {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.unit-selector {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.hours {
+    margin-left: 10px;
+    width: 30%;
+}
+
+.minutes {
+    margin-left: 10px;
+    width: 30%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
