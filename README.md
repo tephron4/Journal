@@ -15,8 +15,13 @@ A basic page with a calendar used to select the desired day for data entry and/o
 
 ### Day View
 
-A page for entering daily information and/or planning out the day. The support data entry methods currently supported are:
+A page for entering daily information and/or planning out the day. The support data entry methods currently supported are:user c
+* Steps - track daily steps
+* Water - track daily water intake by ounces or bottles
+* Calories - displays total daily calory intake based on recorded daily food items
 * To Do List - user can manage a list of to do items, with checkboxes to track completion
+* Workout - user can manage a dynamic list of exercises
+* Food - track daily food intake
 * Notes - for general notes about the day
 
 Also, the user can return to the calendar view and switch the day that is being viewed within the day view.
