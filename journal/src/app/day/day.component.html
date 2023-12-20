@@ -41,6 +41,15 @@
         (updateTodoItem)="updateItem($event)"
     ></app-todo>
 
+    <app-workout
+        [workout]="workout"
+        (setWorkoutTime)="setWorkoutTime($event)"
+        (addExercise)="addExercise()"
+        (deleteExercise)="deleteExercise($event)"
+        (updateExercise)="updateExercise($event)"
+        (moveExercise)="moveExercise($event)"
+    ></app-workout>
+
     <app-food
         [foods]="food.foods"
         (addFood)="addFood()"

@@ -16,7 +16,7 @@
         (valueChange)="changeType()">
         <mat-option 
             *ngFor="let type of getTypes()" 
-            value="type">
+            [value]=type>
             {{ getTypeString(type) }}
         </mat-option>
     </mat-select>

@@ -1,0 +1,113 @@
+<form class="exercise">
+    <button
+        name="up"
+        mat-icon-button
+        class="up-icon"
+        aria-label="Up button"
+        (click)="move(-1)">
+        <mat-icon>expand_less</mat-icon>
+    </button>
+    <mat-form-field class="type-selector" subscriptSizing="dynamic">
+        <mat-select
+            [(value)]="exercise.type"
+            (valueChange)="update()">
+            <mat-option
+                *ngFor="let type of getTypes()"
+                [value]=type>
+                {{ getTypeString(type) }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="description" subscriptSizing="dynamic">
+        <input
+            name="description"
+            matInput
+            [(ngModel)]="exercise.desc"
+            (input)="update()"
+            placeholder="Exercise">
+    </mat-form-field>
+    <button
+        name="delete"
+        mat-icon-button
+        class="delete-icon"
+        arial-label="Delete button"
+        (click)="delete()">
+        <mat-icon>delete</mat-icon>
+    </button>
+</form>
+<form>
+    <button
+        mat-icon-button
+        class="down-icon"
+        aria-label="Down button"
+        (click)="move(1)">
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <!-- -------------------------- -->
+    <!-- For LIFTING type exercise: -->
+    <mat-form-field class="sets" *ngIf="isLifting()" subscriptSizing="dynamic">
+        <input
+            name="sets"
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="exercise.sets"
+            (input)="update()"
+            placeholder="Sets">
+    </mat-form-field>
+    <mat-form-field class="reps" *ngIf="isLifting()" subscriptSizing="dynamic">
+        <input
+            name="reps"
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="exercise.reps"
+            (input)="update()"
+            placeholder="Reps">
+    </mat-form-field>
+    <mat-form-field class="weight" *ngIf="isLifting()" subscriptSizing="dynamic">
+        <input
+            name="weight"
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="exercise.weight"
+            (input)="update()"
+            placeholder="Weight">
+    </mat-form-field>
+    <mat-form-field class="unit-selector" *ngIf="isLifting()" subscriptSizing="dynamic">
+        <mat-select
+            name="unit"
+            [(ngModel)]="exercise.unit"
+            (valueChange)="update()"
+            placeholder="Unit">
+            <mat-option
+                *ngFor="let unit of getUnits()"
+                [value]=unit>
+                {{ getUnitString(unit) }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- ------------------------- -->
+    <!-- For CARDIO type exercise: -->
+    <mat-form-field class="hours" *ngIf="!isLifting()" subscriptSizing="dynamic">
+        <input
+            name="hours"
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="time.hours"
+            (input)="setTime()">
+        <span matTextSuffix>hours</span>
+    </mat-form-field>
+    <mat-form-field class="minutes" *ngIf="!isLifting()" subscriptSizing="dynamic">
+        <input
+            name="minutes"
+            matInput
+            type="number"   
+            [min]="0"
+            [(ngModel)]="time.minutes"
+            (input)="setTime()">
+        <span matTextSuffix>minutes</span>
+    </mat-form-field>
+</form>
